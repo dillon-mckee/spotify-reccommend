@@ -28,7 +28,8 @@ app.get('/search/:name', function(req, res) {
     });
 
     searchReq.on('end', function(item) {
-        var artist = item.artists.items[0]
+        var artist = item.artists.items[0];
+        console.log(item.artists);
         res.json(artist);
     });
 
@@ -36,7 +37,22 @@ app.get('/search/:name', function(req, res) {
         res.sendStatus(code);
     });
 
-    var relatedReq = getFromApi('artists' + '')
+
+
+    // var relatedEndpoint = 'artists/' + artistId + '/related-artists';
+    // console.log(relatedEndpoint);
+    //
+    // var relatedReq = getFromApi(relatedEndpoint, {
+    //     limit:1
+    // });
+    //
+    // relatedReq.on('end',function(item){
+    //     console.log('I am relatedartists response ' + res.body);
+    // })
+    //
+    // relatedReq.on('error', function(code) {
+    //     res.sendStatus(code);
+    // });
 });
 
 app.listen(8080, 'localhost');
